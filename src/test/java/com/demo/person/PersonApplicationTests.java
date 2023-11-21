@@ -8,6 +8,9 @@ class PersonApplicationTests {
 
     @Test
     void contextLoads() {
+        // given
+        // when
+        // then
     }
 
 }

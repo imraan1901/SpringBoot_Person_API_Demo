@@ -51,11 +51,10 @@ public class PersonService {
 
     public ResponseEntity<?> getAllPersonWithHobby(String h) {
         Optional<Hobby> hobby = hobbyRepository.findHobbyBy(h);
-
         if(hobby.isEmpty()) {
-            ResponseEntity
+            return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
-                    .body("no hobbies in database");
+                    .body("hobby not in database");
         }
 
         List<Person> persons = personRepository.findAll();
@@ -70,12 +69,12 @@ public class PersonService {
         }
 
         return ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .status(HttpStatus.FOUND)
                 .body(personsWithHobby);
     }
 
     @Transactional
-    public ResponseEntity<?>  updatePerson(Long personId, String hobbies, String address) {
+    public ResponseEntity<String>  updatePerson(Long personId, String hobbies, String address) {
         Optional<Person> person = personRepository.findById(personId);
 
         if (person.isEmpty()) {
@@ -97,6 +96,6 @@ public class PersonService {
         };
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)
-                .body(person);
+                .body(person.get().toString());
     }
 }

@@ -4,9 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping(path = "api/v1/person")
 public class PersonController {
@@ -34,7 +31,7 @@ public class PersonController {
     }
 
     @PutMapping(path = "{personId}")
-    public ResponseEntity<?> updatePerson(@PathVariable("personId") long personId,
+    public ResponseEntity<String> updatePerson(@PathVariable("personId") long personId,
                                 @RequestParam(required = false) String hobbies,
                                @RequestParam(required = false) String address) {
 

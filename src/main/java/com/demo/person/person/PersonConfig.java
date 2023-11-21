@@ -13,26 +13,29 @@ public class PersonConfig {
     CommandLineRunner commandLineRunnerPerson(
             PersonRepository repository) {
         return args -> {
-            repository.saveAll(List.of(
-                    new Person(
-                            "Imraan",
-                            "1,3,5",
-                            "458 sandy mountain dr.",
-                            "510-123-4567"
-                    ),
-                    new Person(
-                            "Robert",
-                            "1,4,6",
-                            "459 sandy mountain dr.",
-                            "510-178-4127"
-                    ),
-                    new Person(
-                            "Sam",
-                            "2,4,5",
-                            "460 sandy mountain dr.",
-                            "510-189-4051"
-                    )
-            ));
+            // Load initial data for demo
+            if(repository.count() == 0 ) {
+                repository.saveAll(List.of(
+                        new Person(
+                                "Imraan",
+                                "1,3,5",
+                                "458 sandy mountain dr.",
+                                "510-123-4567"
+                        ),
+                        new Person(
+                                "Robert",
+                                "1,4,6",
+                                "459 sandy mountain dr.",
+                                "510-178-4127"
+                        ),
+                        new Person(
+                                "Sam",
+                                "2,4,5",
+                                "460 sandy mountain dr.",
+                                "510-189-4051"
+                        )
+                ));
+            }
         };
     };
 }

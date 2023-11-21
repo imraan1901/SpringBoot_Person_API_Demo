@@ -13,23 +13,26 @@ public class HobbyConfig {
     CommandLineRunner commandLineRunnerHobby(
             HobbyRepository repository) {
         return args -> {
-            repository.saveAll(
-                    List.of(new Hobby(
-                            "Running"
-                    ), new Hobby(
-                            "Woodworking"
-                    ), new Hobby(
-                            "Pottery"
-                    ), new Hobby(
-                            "Stargazing"
-                    ), new Hobby(
-                            "Cooking"
-                    ), new Hobby(
-                            "Gardening"
-                    ), new Hobby(
-                            "Backpacking"
-                    ))
-            );
+            // Load initial data for demo
+            if(repository.count() == 0 ) {
+                repository.saveAll(
+                        List.of(new Hobby(
+                                "running"
+                        ), new Hobby(
+                                "woodworking"
+                        ), new Hobby(
+                                "pottery"
+                        ), new Hobby(
+                                "stargazing"
+                        ), new Hobby(
+                                "cooking"
+                        ), new Hobby(
+                                "gardening"
+                        ), new Hobby(
+                                "backpacking"
+                        ))
+                );
+            }
         };
 
     }
